@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Items</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="{% url 'items:items' %}">Meus Items</a>
+    <a class="navbar-brand" href="{% url 'items:adicionar' %}">Adicionar Item</a>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="row">
+        {% for item in lista_items %}
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.nome }}</h5>
+                        <p class="card-text">{{ item.status }}</p>
+                        <a href="{% url 'items:detalhes' item.id %}" class="btn btn-success">Ver item</a>
+                        <a href="{% url 'items:desativar' item.id %}" class="btn btn-warning">desativar item</a>
+                        <a href="{% url 'items:editar' item.id %}" class="btn btn-primary">editar item</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</main>
+
+</body>
+</html>
